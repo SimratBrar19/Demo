@@ -1,0 +1,23 @@
+
+Jenkins is a CI tool.
+Jenkins job is created to automatically run the tests.
+Download jenkins from website.
+Generic java package (.war)
+Go to CMD.exe and run command to run the jenkins.
+java -jar jenkins.war -httpPort=9090 or 8080
+After jenkins is up got to url "localhost:9090" on a browser.
+Manage jenkins -> Global tool configuration
+1. JDK installations
+Give the path for java from your system and save.
+2. Maven installations
+Give the path for maven from your system and save.
+=======================================================
+Headless mode: Browser opens in the backend.
+Create chromeoptions object and give the headless argument and pass options object to driver object.
+ChromeOptions options = new ChromeOptions();
+options.addArguments("headless");
+WebDriver driver = new ChromeDriver(options);
+
+When command given from maven
+mvn test -Dbrowser=Chromeheadless
+write a code in if else loop if browsername contains chromeheadless, only then excute the above code.

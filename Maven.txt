@@ -1,0 +1,41 @@
+Apache Maven is software project management and build management tool for java framaworks.
+1. Central repository to get dependencies.
+2. Maintaining common  structure across organization.
+3. Flexibilty in integrating CI tools.
+4. Plugins for test frameworks execution.
+
+Install maven from website and give MAVEN_HOME path in env variables like java.
+mvn -version 
+SureFireplugin is needed to run the tests in Maven.
+Add the SureFireplugin code in plugin tags in pom.xml
+
+GAP
+Group ID
+Artifact ID : Project name
+Package Name
+Add Selenium and Testng dependencies in pom.xml
+Need to add test word for class names for Maven
+CCT: Clean compile test
+mvn clean
+mvn compile
+mvn test
+
+Convert Maven project into Test NG project:
+Right click and convert to TestNG project.
+testng.xml will be created.
+Add configurations tags for TestNG.xml into pom.xml so it only runs the testNG suite.
+
+Create different profiles in pom.xml for separate suites like smoke or regression:
+Create profile tag and give it different IDs like smoke or regression.
+Run maven test with different profiles:
+mvn test -PRegression
+mvn test -PSmoke
+This is only run specific profiles.
+
+Set global parameters directly from mvn terminal:
+mvn test -Dbrowser=Firefox     // Gives browser property as Firefox.
+User ternary operator to get the correct property:
+If the mvn command gives property then operate as per that on priority if blank then use GlobalData properties file value.
+System.getProperty("browser")!= null ? System.getProperty("browser") : prop.getProperty("browser")
+
+

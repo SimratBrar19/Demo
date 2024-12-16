@@ -1,0 +1,23 @@
+ThreadLocal Class to avoid sync issues: Make it thread safe:
+Create object of Threadlocal class and push the extent test object into by using set command.
+ThreadLocal extentTest = new ThreadLocal();
+extentTest.set(test);      // test is the extent test object
+extentTest.get();          // Replace the extent test object with extentTest.get() in listeners
+
+This removes any issues with tests being run concurrently.
+
+================================================================
+IRetry mechanism to rerun the failed flaky tests:
+Create a Retry class which implements IRetryAnalyzer class.
+
+public class Retry implements IRetryAnalyzer {
+int count = 0;
+int maxTry = 1;
+public boolean retry(ITestResult result){
+if(count<maxTry){
+count++
+return true
+}}}
+In order to give this info to tests that can fail, add the following details @test annotation for the specific tests that can fail.
+@Test(retryAnalyzer = Retry.class)     // Retry is the classname where logic is added.
+

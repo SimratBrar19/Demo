@@ -1,0 +1,48 @@
+
+Page object Pattern:
+Create objects of landing page and put them in a class landing page.
+Driver is in another standalone class so needs to be passed in landing page class.
+Create constructor in landingpage class name same as landingpage which executes first in that class.
+public LandingPage(WebDriver driver)
+{
+this.driver = driver
+PageFactory.initElements(driver, this);
+}
+Create object for landing page in standalone class.
+LandingPage landingpage = new LandingPage(driver) 
+-------------------------------------------------------
+Page factory design:
+@FindBy(id="userEmail")
+WebElement userEmail;
+To give driver for above command, knowledge give a command in constructor.
+PageFactory.initElements(driver, this);
+@FindBy(id="userPassword")
+WebElement password;
+@FindBy(id="login")
+WebElement submit;
+These 3 steps will login so create a method for these 3 steps.
+public void loginApplication(String email, String pw)
+{
+userEmail.sendKeys(email);
+password.sendKeys(pw);
+submit.click();
+}
+Now we can call this method from main test.
+LandingPage landingpage = new LandingPage(driver) 
+landingpage.loginApplication("abc.com", "qwertykeys")
+Similarly create a method to go to a website.
+------------------------------------------------
+Reusable code can be added to a specific class.
+Create Abstractcomponent class and use inheritance.
+LandingPage extends Abstractcomponent.
+Argument will be a By locator.
+public void waitForElementToAppear(By findBy)
+{
+
+}
+Use super(driver) command to send the driver variable from child to parent class.
+Use a constructor to catch the driver variable.
+------------------------------------------------
+
+
+

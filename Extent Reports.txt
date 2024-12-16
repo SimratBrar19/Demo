@@ -1,0 +1,30 @@
+
+Extent Reporting:
+
+Create new Maven project.
+Add extent reports dependencies into pom.xml from maven repository.
+Add selenium and testNG dependencies also.
+Create a new method for extent reporting.
+Create objects of 2 classes needed: ExtentReports, ExtentSparkReporter
+Set the path of reporting:
+String path = System.getProperty("user.dir"+"\\reports\\index.html")
+Create object of helper class and set configuration.
+ExtentSparkReporter reporter = new ExtentSparkReporter(path)
+reporter.config().setReportName("Web Automation Results")
+reporter.config().setDocumentTitle("Test Results")
+
+Create the main object of ExtentReports at global level:
+ExtentReports extent = new ExtentReports()
+extent.attachReporter(reporter)
+extent.setSystemInfo("Tester", "Simrat")
+
+@Test
+public void initialDemo{
+ExtentTest test = extent.createTest("Testname")
+Actual test code
+extent.flush()
+}
+After test is run:
+Reports folder gets created and has index.xml in it.
+index.xml has the extent report in it.
+

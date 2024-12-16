@@ -1,0 +1,22 @@
+Apache POI API.
+Data driven testing from excel.
+poi-ooxml and poi.
+Create new Maven project.
+Add poi-ooxml and poi dependencies into pom.xml from maven repository.
+Strategy to access excel data:
+1. Create object for XSSFWorkbook class.
+2. Get access to sheet.
+3. Get access to all rows of sheet.
+4. Get access to a specific row.
+5. Get access to all cells of row.
+6. Access data from excel into arrays.
+
+1. Create object for XSSFWorkbook class:
+FileInputStream fis = new FileInputStream(path of excel file in local)
+XSSFWorkbook workbook = new XSSFWorkbook(fis);
+int sheets = workbook.getNumberOfSheets();
+for(int i=0;i<sheets;i++)
+{
+  if(workbook.getSheetAt(i).equals("testdata")
+   { XSSFSheet sheet = workbook.getSheetAt(i)}
+}

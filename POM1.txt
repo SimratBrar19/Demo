@@ -1,0 +1,35 @@
+Create base test for reusing:
+Create BaseTest class and create initializeDriver method.
+Create properties file GlobalData.properties which has key value pairs of properties.
+public WebDriver driver; (create driver globally)
+public WebDriver initializeDriver()
+{
+Properties prop = new Properties();
+FileInputStream fis = new FileInputStream(path of properties file);
+// Create path dynamically: System.getProperty(user.dir) + path of local
+prop.load(fis);
+String browserName = prop.getProperty("browser")
+
+if (browserName.equalsIgnoreCase("chrome"))
+{
+WebDriverManager.chromedriver().setup();
+Webdriver driver = new Chromedriver();
+}
+else if (browserName.equalsIgnoreCase("firefox"))
+{open firefox browser code}
+return driver;
+}
+
+Create launch application method:
+
+public landingPage launchApplication()
+{
+driver = initializeDriver()
+LandingPage landingPage = new LandingPage(driver);
+landingPage.goTo();
+return landingPage;
+}
+
+Every test shud extend this basetest.
+
+

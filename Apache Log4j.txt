@@ -1,0 +1,53 @@
+Apache Log4j
+Reliable, fast and flexible logging framework written in java.
+Log only when there is error in package A
+Log entire messages for package B
+Logs needed with timestamps
+Logs needed of last week
+Knowing error by just looking at logs.
+
+Create new Log4j java project.
+Download log4j jars from website and add jars into project.
+Create 2 packages alpha and beta and classes.
+Create Log object.
+private static Logger log = LogManager.getLogger(Democlass.class.getName());
+1. log.info("message"): When operation is successfully completed ex: After loading page, or after any successful validations. Its just counterpart to log. Error()
+2. log.error("message"): Use log. Error() to log when elements are not displayed in the page or if any validations fail
+3. log.fatal("message")
+4.log.debug("message"): When each Selenium action is performed like click, SendKeys, getText()
+
+Define the configuration file .xml for log4j.
+Tags: Appenders and Loggers
+Where to log: Appenders tag: Console or file format
+What to log: Loggers tag: Errors(only) or trace(all info)
+How to log: Appenders tag: Layout of message to be logged
+
+Log into a file and not console:
+Create prints.log file at project level.
+Give path of file in xml file: Appenders tag -> Rolling file tag
+
+
+
+Sample file:
+<?xml version="1.0" encoding="UTF-8"?>
+<Configuration status="WARN">
+       <Properties>
+<Property name="basePath">./logs</Property>
+</Properties>
+ 
+  <Appenders>
+      <RollingFile name="File" fileName="${basePath}/prints.log" filePattern="${basePath}/prints-%d{yyyy-MM-dd}.log">
+     <PatternLayout pattern="%d{HH:mm:ss.SSS} [%t] %-5level %logger{36} - %msg%n"/>
+      <SizeBasedTriggeringPolicy size="500" />
+          </RollingFile>
+    <Console name="Console" target="SYSTEM_OUT">
+      <PatternLayout pattern="%d{HH:mm:ss.SSS} [%t] %-5level %logger{36} - %msg%n"/>
+    </Console>
+  </Appenders>
+  <Loggers>
+    <Root level="trace">
+      <AppenderRef ref="File"/>
+    </Root>
+  </Loggers>
+</Configuration>
+
